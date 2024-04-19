@@ -1,0 +1,25 @@
+ def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
+        if root is None:
+            return []
+
+        q = [] 
+        q.append(root)
+        output = [] 
+        while len(q) > 0:
+            size = len(q)
+            level = [] 
+            while size > 0:
+                elem = q.pop(0)            
+                level.append(elem.val)
+                if elem.left is not None:
+                    q.append(elem.left)
+                if elem.right is not None:
+                    q.append(elem.right)
+                size -= 1
+            output.append(level)
+        return output 
+
+'''
+Input: [3,9,20,null,null,15,7]
+Output: [[3],[9,20],[15,7]]
+'''
